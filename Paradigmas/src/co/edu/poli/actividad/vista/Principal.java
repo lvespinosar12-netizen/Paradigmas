@@ -14,6 +14,9 @@ import co.edu.poli.actividad.servicios.ImplementacionOperacionCRUD;
 import co.edu.poli.actividad.servicios.SenderismoDeMontaña;
 import co.edu.poli.actividad.modelo.Escalada;
 
+/**
+ * @author Usuario
+ */
 
 public class Principal {
 
