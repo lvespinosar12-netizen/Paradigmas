@@ -1,0 +1,40 @@
+puede cambiar).
+- Clase: Actividad_turistica.java, línea 220
+Método final: mostrarInformacionBasica() (no puede sobrescribirse).
+- Clase: Tour.java, línea 5
+Declarada como clase final (no puede heredarse).
+6. Visibilidades
+- Atributos: `private` en todas las clases del paquete modelo (ejemplo: private
+String nombre en Actividad_turistica).
+- Métodos: `public` en los constructores y getters/setters.
+7. Multiplicidades
+- Clase: Actividad_turistica.java, línea 140
+- Atributos: `private Reserva[] reserva;`, `private Guia[] guia;`, `private
+Equipaje[] equipaje;`
+(Ejemplo de 1 a muchos).
+8. Sobreescritura de Métodos
+- Clase: Paracaidismo.java, línea XX
+- Método calcularCosto() sobrescrito para aplicar lógica diferente según la
+subclase.
+9. Sobrecarga de Métodos
+- Clase: Actividad_turistica.java, líneas 230 y 240
+- Métodos calcularCosto() con y sin parámetros.
+10. Creación de Objetos
+- Clase: Principal.java (en paquete vista), línea XX
+- Ejemplo: Actividad_turistica act1 = new Paracaidismo("A001", "Vuelo Extremo",
+500000, 2);
+11. Agregaciones
+- Clase: Actividad_turistica.java, línea 130
+- Atributos: `private Tour tour;`, `private Transporte transporte;`, etc.
+12. Herencia
+- Clase: Paracaidismo.java, línea 5
+- Se declara `public class Paracaidismo extends Actividad_turistica`.
+13. Polimorfismo
+- Clase: Principal.java, línea XX
+- Uso de arreglo `Actividad_turistica[] actividades` con diferentes subclases
+(Paracaidismo, Senderismo, Escalada).
+- Ejemplo: recorrer el arreglo y ejecutar el método calcularCosto() que se
+comporta distinto según la subclase.
+
+Enlace del archivo Github.
+https://github.com/lvespinosar12-netizen/Paradigmas.git
