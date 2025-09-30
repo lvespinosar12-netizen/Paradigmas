@@ -15,7 +15,7 @@ import co.edu.poli.actividad.servicios.SenderismoDeMontaña;
 import co.edu.poli.actividad.modelo.Escalada;
 
 /**
- * @author Usuario
+ * @author laura
  */
 
 public class Principal {
