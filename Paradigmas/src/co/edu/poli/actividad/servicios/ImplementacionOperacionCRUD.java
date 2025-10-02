@@ -1,95 +1,77 @@
 package co.edu.poli.actividad.servicios;
 
 import co.edu.poli.actividad.modelo.Actividad_turistica;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
- * Clase que implementa las operaciones CRUD sobre
- * un arreglo dinámico de actividades turísticas.
- * 
- * Permite agregar, consultar, actualizar y eliminar actividades
- * utilizando el identificador único de cada objeto.
+ * Implementación de operaciones CRUD para actividades turísticas.
+ * Permite crear, leer, actualizar y eliminar objetos de tipo Actividad_turistica.
  * 
  * @author Laura
  */
-public class ImplementacionOperacionCRUD implements OperacionCRUD {
+public class ImplementacionOperacionCRUD {
 
-    /** Arreglo dinámico de actividades turísticas */
-    private Actividad_turistica[] actividades;
-    /** Contador de elementos válidos */
-    private int contador;
+    /** Lista de actividades turísticas */
+    private ArrayList<Actividad_turistica> listaActividades = new ArrayList<>();
 
     /**
-     * Constructor por defecto.
-     * Inicializa el arreglo con 5 posiciones.
+     * Crea una nueva actividad turística.
+     * 
+     * @param actividad Actividad a agregar
      */
-    public ImplementacionOperacionCRUD() {
-        this.actividades = new Actividad_turistica[5];
-        this.contador = 0;
-    }
-
-    @Override
     public void crear(Actividad_turistica actividad) {
-        if (actividad == null) return;
-
-        // Buscar primer null disponible
-        for (int i = 0; i < actividades.length; i++) {
-            if (actividades[i] == null) {
-                actividades[i] = actividad;
-                contador++;
-                return;
-            }
-        }
-
-        // Si no hay null, se expande el arreglo
-        actividades = Arrays.copyOf(actividades, actividades.length * 2);
-        actividades[contador] = actividad;
-        contador++;
+        listaActividades.add(actividad);
+        System.out.println("Actividad creada.");
     }
 
-    @Override
-    public Actividad_turistica leer(String idActividad) {
-        for (Actividad_turistica act : actividades) {
-            if (act != null && act.getIdActividad().equals(idActividad)) {
-                return act;
-            }
-        }
-        System.out.println("⚠ Actividad con ID " + idActividad + " no encontrada.");
-        return null;
-    }
-
-    @Override
-    public void actualizar(String idActividad, Actividad_turistica nueva) {
-        for (int i = 0; i < actividades.length; i++) {
-            if (actividades[i] != null && actividades[i].getIdActividad().equals(idActividad)) {
-                actividades[i] = nueva;
-                System.out.println("✔ Actividad con ID " + idActividad + " actualizada.");
-                return;
-            }
-        }
-        System.out.println("⚠ No se pudo actualizar: actividad con ID " + idActividad + " no encontrada.");
-    }
-
-    @Override
-    public void eliminar(String idActividad) {
-        for (int i = 0; i < actividades.length; i++) {
-            if (actividades[i] != null && actividades[i].getIdActividad().equals(idActividad)) {
-                actividades[i] = null;
-                contador--;
-                System.out.println("✔ Actividad con ID " + idActividad + " eliminada.");
-                return;
-            }
-        }
-        System.out.println("No se pudo eliminar: actividad con ID " + idActividad + " no encontrada.");
-    }
-
-    @Override
+    /**
+     * Lista todas las actividades registradas.
+     */
     public void listar() {
-        System.out.println("\n📌 Lista de actividades:");
-        for (Actividad_turistica act : actividades) {
-            if (act != null) {
-                System.out.println(act);
+        for (Actividad_turistica a : listaActividades) {
+            System.out.println(a);
+        }
+    }
+
+    /**
+     * Muestra una actividad por su ID.
+     * 
+     * @param id Identificador de la actividad
+     */
+    public void leer(String id) {
+        for (Actividad_turistica a : listaActividades) {
+            if (a.getIdActividad().equals(id)) {
+                System.out.println(a);
+                return;
             }
         }
+        System.out.println("Actividad no encontrada.");
+    }
+
+    /**
+     * Actualiza una actividad existente.
+     * 
+     * @param id ID de la actividad a modificar
+     * @param nuevaActividad Nueva información
+     */
+    public void actualizar(String id, Actividad_turistica nuevaActividad) {
+        for (int i = 0; i < listaActividades.size(); i++) {
+            if (listaActividades.get(i).getIdActividad().equals(id)) {
+                listaActividades.set(i, nuevaActividad);
+                System.out.println("Actividad actualizada.");
+                return;
+            }
+        }
+        System.out.println("Actividad no encontrada.");
+    }
+
+    /**
+     * Elimina una actividad por su ID.
+     * 
+     * @param id ID de la actividad a eliminar
+     */
+    public void eliminar(String id) {
+        boolean eliminado = listaActividades.removeIf(a -> a.getIdActividad().equals(id));
+        System.out.println(eliminado ? "Actividad eliminada." : "Actividad no encontrada.");
     }
 }

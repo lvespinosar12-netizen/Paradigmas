@@ -3,41 +3,49 @@ package co.edu.poli.actividad.servicios;
 import co.edu.poli.actividad.modelo.Actividad_turistica;
 
 /**
- * Interfaz que define las operaciones CRUD 
- * para manejar actividades turísticas.
+ * Interfaz que define las operaciones básicas CRUD (Crear, Leer, Actualizar, Eliminar) 
+ * para objetos de tipo {@link Actividad_turistica}.
+ * Esta interfaz permite estandarizar el manejo de actividades turísticas en el sistema.
+ * 
+ * Las clases que implementen esta interfaz deben proporcionar la lógica correspondiente
+ * para cada operación.
  * 
  * @author Laura
  */
 public interface OperacionCRUD {
 
     /**
-     * Inserta una nueva actividad en el arreglo.
-     * @param actividad Objeto de tipo Actividad_turistica a insertar.
+     * Crea una nueva actividad turística.
+     * 
+     * @param act Actividad a registrar
      */
-    void crear(Actividad_turistica actividad);
+    void crear(Actividad_turistica act);
 
     /**
-     * Busca una actividad por su identificador.
-     * @param idActividad Identificador de la actividad.
-     * @return Actividad_turistica encontrada o null si no existe.
+     * Lee una actividad turística por su identificador.
+     * 
+     * @param id Identificador de la actividad
+     * @return Actividad encontrada o null si no existe
      */
-    Actividad_turistica leer(String idActividad);
+    Actividad_turistica leer(String id);
 
     /**
-     * Actualiza los datos de una actividad.
-     * @param idActividad Identificador de la actividad a actualizar.
-     * @param actividad Objeto con los datos nuevos.
+     * Actualiza una actividad existente con nuevos datos.
+     * 
+     * @param id Identificador de la actividad a modificar
+     * @param nuevaActividad Objeto con la nueva información
      */
-    void actualizar(String idActividad, Actividad_turistica actividad);
+    void actualizar(String id, Actividad_turistica nuevaActividad);
 
     /**
-     * Elimina una actividad por su identificador.
-     * @param idActividad Identificador de la actividad a eliminar.
+     * Elimina una actividad turística por su identificador.
+     * 
+     * @param id Identificador de la actividad a eliminar
      */
-    void eliminar(String idActividad);
+    void eliminar(String id);
 
     /**
-     * Lista todas las actividades registradas.
+     * Lista todas las actividades turísticas registradas.
      */
     void listar();
 }
